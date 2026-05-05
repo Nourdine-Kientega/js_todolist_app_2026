@@ -49,7 +49,7 @@ body {
   margin-bottom: 2rem;
   display: flex;
   gap: 5px;
-    align-items: baseline;
+    align-items: center;
 }
 
 .header h1 {
@@ -58,6 +58,11 @@ body {
   color: var(--text);
   letter-spacing: -0.5px;
   line-height: 1;
+}
+
+.header div {
+  display: flex;
+  gap: 5px;
 }
 
 .header p {
@@ -381,4 +386,19 @@ body {
   color: var(--text-hint);
   font-family: 'DM Mono', monospace;
   margin-bottom: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .header div span {
+    margin-left: 0;
+  }
+
+  .input-row button {
+    width: 100%;
+  }
 }
