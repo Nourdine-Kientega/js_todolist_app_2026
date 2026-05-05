@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <div class="header">
+        <h1>My tasks</h1>
+        <span class="badge" id="count-badge">0</span>
+        <p>(Uncompleted tasks)</p>
+    </div>
+
+    <div class="input-row">
+      <input type="text" id="todo-input" placeholder="What needs to be done?" />
+      <button id="add-btn">Add task</button>
+    </div>
+
+    <div class="section-label">Tasks</div>
+    <ul class="todo-list" id="todo-list"></ul>
+    <div class="empty" id="empty-state">
+      <span>✦</span>
+      No tasks yet — add one above
+    </div>
+  </div>
+
+  <!-- View Modal -->
+  <div class="modal-overlay" id="view-modal">
+    <div class="modal">
+      <h3>Task details</h3>
+      <div class="todo-text-view" id="view-text"></div>
+      <div class="view-meta" id="view-meta"></div>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="view-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+      <h3>Edit task</h3>
+      <input type="text" id="edit-input" />
+      <div class="modal-actions">
+        <button class="btn-cancel" id="edit-cancel">Cancel</button>
+        <button class="btn-save" id="edit-save">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div class="modal-overlay" id="del-modal">
+    <div class="modal">
+      <h3>Remove task?</h3>
+      <p>This will permanently delete the task. This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="del-cancel">Cancel</button>
+        <button class="btn-confirm" id="del-confirm">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

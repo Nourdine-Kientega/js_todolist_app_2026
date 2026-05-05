@@ -1,0 +1,384 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: #4f46e5;
+  --accent-light: #eef2ff;
+  --accent-border: #c7d2fe;
+  --danger: #dc2626;
+  --danger-light: #fef2f2;
+  --success: #059669;
+  --success-light: #ecfdf5;
+  --warn: #d97706;
+  --warn-light: #fffbeb;
+  --text: #1e1b4b;
+  --text-muted: #6b7280;
+  --text-hint: #9ca3af;
+  --bg: #f1f1f1;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* App container */
+.app {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  margin-top: 3rem;
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+
+/* Header */
+.header {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 5px;
+    align-items: baseline;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.header p {
+  font-size: 13px;
+  color: var(--text-hint);
+  margin-top: 4px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* Badge */
+.badge {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 99px;
+  padding: 5px 6px;
+  font-weight: 500;
+  margin-left: 6px;
+  text-align: center;
+}
+
+/* Input row */
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input-row input::placeholder {
+  color: var(--text-hint);
+}
+
+.input-row input:focus {
+  border-color: var(--accent);
+}
+
+.input-row button {
+  padding: 10px 18px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.input-row button:hover {
+  opacity: 0.88;
+}
+
+/* Section label */
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  margin-bottom: 0.75rem;
+  font-family: 'DM Mono', monospace;
+}
+
+/* Todo list */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.todo-item:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.06);
+}
+
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+  color: var(--text-hint);
+}
+
+/* Check button */
+.check-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.todo-item.done .check-btn {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.check-btn svg {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.todo-item.done .check-btn svg {
+  opacity: 1;
+}
+
+/* Todo text */
+.todo-text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.4;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Action buttons */
+.todo-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s;
+}
+
+.action-btn svg {
+  stroke: #9ca3af;
+  transition: stroke 0.12s;
+}
+
+.action-btn.view:hover {
+  background: var(--success-light);
+}
+
+.action-btn.view:hover svg {
+  stroke: var(--success);
+}
+
+.action-btn.edit:hover {
+  background: var(--warn-light);
+}
+
+.action-btn.edit:hover svg {
+  stroke: var(--warn);
+}
+
+.action-btn.del:hover {
+  background: var(--danger-light);
+}
+
+.action-btn.del:hover svg {
+  stroke: var(--danger);
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 2.5rem 0;
+  color: var(--text-hint);
+  font-size: 13px;
+}
+
+.empty span {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 0.5rem;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+/* Modal box */
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 360px;
+  border: 1px solid var(--border);
+}
+
+.modal h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.modal p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.modal input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 1rem;
+  outline: none;
+  color: var(--text);
+  background: var(--surface);
+}
+
+.modal input:focus {
+  border-color: var(--accent);
+}
+
+/* Modal actions */
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.15s;
+  border: none;
+}
+
+.modal-actions button:hover {
+  opacity: 0.8;
+}
+
+.btn-cancel {
+  background: none;
+  border: 1px solid var(--border) !important;
+  color: var(--text-muted);
+}
+
+.btn-confirm {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-save {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* View modal content */
+.todo-text-view {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  padding: 10px 12px;
+  background: var(--accent-light);
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.view-meta {
+  font-size: 12px;
+  color: var(--text-hint);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 1.25rem;
+}
